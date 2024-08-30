@@ -4,7 +4,7 @@ There are two main class, MyDataset(my_dataset.py) and Trainer(trainer.py), the 
 
 ## myDataset
 First, import the dataset package.
-```
+```python
 from my_dataset import MyDataset
 ```
 The source file must be in 'jsonl', 'csv', or 'tsv' format, each of which must contained a attribute called 'label', for example, a possible jsonl file may be:
@@ -36,6 +36,10 @@ train_dataloader = train_dataset.to_dataloader(16, shuffle=True)
 ```
 
 ## Trainer
+First, import the trainer package.
+```python
+from trainer import Trainer
+```
 To simply the training process, I construct a class Trainer, and the parameter's meaning is shown below
 ```python
 def __init__(self,
