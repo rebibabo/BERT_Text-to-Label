@@ -25,12 +25,12 @@ Your should give a parameter "name" to give each column a name
 dataset = MyDataset('b.csv', delimiter='\t', header=None, names=['source', 'label', 'tag', 'sentence'])
 ```
 
-After loading the source file, then run the tokenize method, inputting the tokenize's model_name, the attribute to be tokenized, and the max_length, then there will be two new attributes, input_ids and attention_mask
+After loading the source file, then run the tokenize method, inputting the tokenize's model_name, the selecting attribute to be tokenized, and the max_length, then there will be two new attributes, input_ids and attention_mask
 ```python
 train_dataset.tokenize('bert-base-uncased', 'sentence', do_lower_case=True)
 ```
 
-Lastly, convert this dataset into the Dataloader, call the to_dataloader method, providing the batch_size and whether to shuffle, generally shuffle=True for training, and shuffle=False for Evaluating and testing.
+Lastly, convert this dataset into the Dataloader by calling the to_dataloader method, providing the batch_size and whether to shuffle, generally shuffle=True for training, and shuffle=False for evaluating and testing.
 ```python
 train_dataloader = train_dataset.to_dataloader(16, shuffle=True)
 ```
