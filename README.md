@@ -40,7 +40,7 @@ First, import the trainer package.
 ```python
 from trainer import Trainer
 ```
-To simply the training process, I construct a class Trainer, and the parameter's meaning is shown below
+To simplify the training process, I construct a class Trainer, and the parameter's meaning is shown below
 ```python
 def __init__(self,
     model_name: str,             # The name of the pre-trained model
