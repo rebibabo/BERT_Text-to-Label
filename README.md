@@ -31,6 +31,41 @@ train_dataset.tokenize('bert-base-uncased', 'sentence', do_lower_case=True)
 ```
 
 Lastly, convert this dataset into the Dataloader, call the to_dataloader method, providing the batch_size and whether to shuffle, generally shuffle=True for training, and shuffle=False for Evaluating and testing.
-```
+```python
 train_dataloader = train_dataset.to_dataloader(16, shuffle=True)
+```
+
+## Trainer
+To simply the training process, I construct a class Trainer, and the parameter's meaning is shown below
+```python
+def __init__(self,
+    model_name: str,             # The name of the pre-trained model
+    num_labels: int,             # The number of labels in the dataset
+    epochs: int,                 # The number of epochs to train the model
+    lr: float,                   # The learning rate of the optimizer
+    output_dir: str,             # The output directory to save the model
+    seed: int = None,            # The random seed for reproducibility
+    eps: float = 1e-8,           # The epsilon value for AdamW optimizer
+    metric: str = 'f1',          # The metric to evaluate the model
+):
+```
+You can load the model by:
+```python
+trainer = Trainer(
+    model_name='bert-base-uncased',
+    num_labels=2,
+    epochs=4,
+    lr=2e-5,
+    output_dir='saved_models',
+    seed=42,
+    metric='f1'
+)
+```
+Then train the model ,inputting the train_dataloader, if providing the eval_dataloader, each epoch will test in eval_dataloader
+```python
+trainer.train(train_dataloader=train_dataloader, eval_dataloader=eval_dataloader)
+```
+After training, it will save the best metric score to the output_dir, and call the test method:
+```python
+trainer.test(test_dataloader)
 ```
