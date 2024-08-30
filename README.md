@@ -73,3 +73,6 @@ After training, it will save the best metric score to the output_dir, and call t
 ```python
 trainer.test(test_dataloader)
 ```
+
+## Show case
+![image](https://github.com/user-attachments/assets/bd422d23-e859-463c-8e33-322dfac25c71)
